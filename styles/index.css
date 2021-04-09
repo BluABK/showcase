@@ -1,6 +1,11 @@
 body {
+    /* Override body margin for better control over elements. */
     margin: 0;
-    padding: 0;
+}
+
+.app {
+    /* Restore default body margin for content within app. */
+    margin: 8px;
 }
 
 .top-bar {
@@ -9,7 +14,6 @@ body {
     height: 50px;
     top: 0;
     left: 0;
-    z-index: 5000;
     background-color: rgb(57, 57, 57);
     border-top: 3px solid orange;
     overflow: hidden;
@@ -21,7 +25,29 @@ body {
     height: auto;
     bottom: 0;
     left: 0;
-    z-index: 5000;
     background-color: rgb(57, 57, 57);
     overflow: hidden;
+    padding: 5px 0px 5px 0px;
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+  
+  .box .row {
+    border: 1px dotted grey;
+}
+  
+.box .row.header {
+    flex: 0 1 50px;
+}
+
+.box .row.content {
+    flex: 1 1 auto;
+}
+
+.box .row.footer {
+    flex: 0 1 auto;
 }

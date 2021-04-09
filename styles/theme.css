@@ -18,3 +18,40 @@ input {
 a {
     color: rgb(106, 135, 89);
 }
+
+.dropdown-content {
+    background-color: #242424;
+}
+
+.dropdown-content p {
+    color: rgb(204, 204, 204);
+    color: white;
+}
+
+.dropdown-content .dropdown-item:nth-child(1) {
+    background-color: hsl(27, 90%, 68%);
+}
+.dropdown-content .dropdown-item:nth-child(2) {
+    background-color: hsl(11, 89%, 65%);
+}
+.dropdown-content .dropdown-item:nth-child(3) {
+    background-color: hsl(355, 74%, 51%);
+}
+.dropdown-content .dropdown-item:nth-child(4) {
+    background-color: hsl(339, 65%, 52%);
+}
+.dropdown-content .dropdown-item:nth-child(5) {
+    background-color: hsl(314, 51%, 50%);
+}
+.dropdown-content .dropdown-item:nth-child(6) {
+    background-color: hsl(277, 43%, 57%);
+}
+.dropdown-content .dropdown-item:nth-child(7) {
+    background-color: hsl(255, 29%, 57%);
+}
+.dropdown-content .dropdown-item:nth-child(8) {
+    background-color: hsl(231, 40%, 66%);
+}
+.dropdown-content .dropdown-item:nth-child(9) {
+    background-color: #87A8C5;
+}

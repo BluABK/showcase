@@ -144,10 +144,11 @@ function hideElementsNotInFocus() {
         console.log(shownMenuHasMouseOver);
         if (!shownMenuHasMouseOver) {
             closeDropdownMenu(shownMenu);
-
         }
     }
 }
+
+window.addEventListener("click", hideElementsNotInFocus);
 
 updateViews();
 loadMenu("../includes.html");

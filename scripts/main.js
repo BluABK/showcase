@@ -96,7 +96,12 @@ function loadContent(path, selector="") {
     // Create a temporary DIV element in memory and use load() on it,
     // in order to load the contents of a file into it using JQuery.
     var $div = $('<div>');
-    $div.load(`${path}${selector}`, function(){
+    $div.load(`${path}${selector}`, function(responseText, textStatus, request){
+        if (textStatus == "error") {
+            alert(`Failed loading page!\n\nPage: ${path}${selector}\nError: HTTP ${request.status}: ${request.statusText}`);
+            return;
+        }
+
         content = $(this)[0].innerHTML;
 
         updateViews();
@@ -134,14 +139,11 @@ function showDropdownMenu(subMenuElement) {
 //}
 
 function selectDropdownOption(element) {
-    console.log("element", element);
-    console.log("element href ", element.getAttribute("href"));
     content = loadContent(element.getAttribute("href"));
 }
 
 function hideElementsNotInFocus() {
     if (shownMenu) {
-        console.log(shownMenuHasMouseOver);
         if (!shownMenuHasMouseOver) {
             closeDropdownMenu(shownMenu);
         }

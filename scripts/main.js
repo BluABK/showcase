@@ -3,6 +3,7 @@ let menuBarDiv = `<div id="menu-bar"></div>`;
 let menusDivHTML = "";
 let href = "../placeholder.html";
 let content = "Please select content from the dropdown menu.";
+let shownMenu = null;
 
 // View
 function updateViews() {
@@ -101,8 +102,23 @@ function loadContent(path, selector="") {
     });
 }
 
-function showDropdownMenu(a) {
-    a.parentNode.getElementsByClassName('dropdown-content')[0].classList.toggle("show");
+function closeDropdownMenu(menuElement) {
+    menuElement.classList.remove("show");
+}
+
+function showDropdownMenu(subMenuElement) {
+    let clickedElementParent = subMenuElement.parentNode.getElementsByClassName('dropdown-content')[0]
+    
+    // Close currently open menu (if any).
+    if (shownMenu) {
+        closeDropdownMenu(shownMenu);
+    }
+
+    // Show the currently opened menu.
+    clickedElementParent.classList.toggle("show");
+
+    // Store the currently opened menu.
+    shownMenu = clickedElementParent;
 }
 
 // function showInnerDropdownMenu(optionElement) {

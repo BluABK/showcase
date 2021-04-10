@@ -4,6 +4,7 @@ let menusDivHTML = "";
 let href = "../placeholder.html";
 let content = "Please select content from the dropdown menu.";
 let shownMenu = null;
+let shownMenuHasMouseOver = false;
 
 // View
 function updateViews() {
@@ -50,7 +51,7 @@ function addMenu(name, items) {
     }
 
     menuDiv = `
-        <div class="dropbtn">
+        <div class="dropbtn"  onMouseOver="shownMenuHasMouseOver = true" onMouseOut="shownMenuHasMouseOver = false">
             <div class="menu-label" onClick="showDropdownMenu(this)">${name}▾</div>
 
             <div class="dropdown-content" onClick="selectDropdownOption(event.target)">
@@ -104,6 +105,7 @@ function loadContent(path, selector="") {
 
 function closeDropdownMenu(menuElement) {
     menuElement.classList.remove("show");
+    shownMenu = null;
 }
 
 function showDropdownMenu(subMenuElement) {
@@ -135,6 +137,16 @@ function selectDropdownOption(element) {
     console.log("element", element);
     console.log("element href ", element.getAttribute("href"));
     content = loadContent(element.getAttribute("href"));
+}
+
+function hideElementsNotInFocus() {
+    if (shownMenu) {
+        console.log(shownMenuHasMouseOver);
+        if (!shownMenuHasMouseOver) {
+            closeDropdownMenu(shownMenu);
+
+        }
+    }
 }
 
 updateViews();

@@ -1,5 +1,6 @@
 // Model
-// let dropdownOptions = 
+let menuBarDiv = `<div id="menu-bar"></div>`;
+let menusDivHTML = "";
 let href = "../placeholder.html";
 let content = "Please select content from the dropdown menu.";
 
@@ -10,13 +11,19 @@ function updateViews() {
 }
 
 function updateViewTopBar() {
-    document.getElementById("top-bar").innerHTML = `
-        <div id="dropdown" class="dropbtn" onClick="showDropdownMenu(this)">Load task…<div>
-            <div id="myDropdown" class="dropdown-content" onClick="selectDropdownOption(event.target)"></div>
-        </div>
+    console.log("menusDiv (view)", menusDivHTML);
+
+    menuBarDiv = `
+        <div id="menu-bar">${menusDivHTML}</div>
     `;
 
-    $("#myDropdown").load("includes.html"); 
+    document.getElementById("top-bar").innerHTML = `
+        ${menuBarDiv}
+    `;
+    // Populate item contents
+    // $("#dropdown-includes-menus").load("includes.html", ".menu");
+    // $("#dropdown-element-outer").load("includes.html", ".dropdown-outer-item");
+    // $("#dropdown-element-inner").load("includes.html");
 }
 
 function updateViewContent() {
@@ -26,6 +33,60 @@ function updateViewContent() {
 }
 
 // Controller
+/**
+ *
+ * @param {String} name
+ * @param {HTMLCollection} items
+ */
+function addMenu(name, items) {
+    let itemsHTML = "";
+    let menuDiv = document.createElement("div");
+    console.log("name", name);
+    console.log("items", items);
+
+    for (let item of items) {
+        itemsHTML += item.outerHTML;
+    }
+
+    menuDiv = `
+        <div class="dropbtn">
+            <div class="menu-label" onClick="showDropdownMenu(this)">${name}▾</div>
+
+            <div class="dropdown-content">
+                ${itemsHTML}
+            </div>
+        </div>
+    `;
+
+    menusDivHTML += menuDiv;
+
+    return menuDiv;
+}
+
+function addMenus(menuElements) {
+    console.log("menuElements", menuElements);
+    for (let menuElement of menuElements) {
+        let retv = addMenu(menuElement.getAttribute("name"), menuElement.children);
+        console.log("Added menu", retv);
+    }
+}
+
+function loadMenu(path, selector="") {
+    // Append a whitespace to selector if used.
+    if (selector != "") selector = ' ' + selector;
+
+    // Create a temporary DIV element in memory and use load() on it,
+    // in order to load the contents of a file into it using JQuery.
+    var $div = $('<div>');
+    $div.load(`${path}${selector}`, function(){
+        // content = $(this)[0].innerHTML;
+        addMenus($(this)[0].children);
+
+        updateViews();
+    });
+}
+
+
 function loadContent(path, selector="") {
     // Append a whitespace to selector if used.
     if (selector != "") selector = ' ' + selector;
@@ -44,8 +105,19 @@ function showDropdownMenu(a) {
     a.parentNode.getElementsByClassName('dropdown-content')[0].classList.toggle("show");
 }
 
+// function showInnerDropdownMenu(optionElement) {
+//     console.log(optionElement);
+//     optionElement.parentNode.getElementsByClassName('dropdown-inner-content')[0].classList.toggle("show");
+// }
+
+// function hoverOuterDropdownOption(optionElement) {
+//     console.log(optionElement);
+//     showInnerDropdownMenu(optionElement);
+//}
+
 function selectDropdownOption(element) {
     content = loadContent(element.getAttribute("href"));
 }
 
 updateViews();
+loadMenu("../includes.html");

@@ -11,7 +11,7 @@ function updateViews() {
 }
 
 function updateViewTopBar() {
-    console.log("menusDiv (view)", menusDivHTML);
+    // console.log("menusDiv (view)", menusDivHTML);
 
     menuBarDiv = `
         <div id="menu-bar">${menusDivHTML}</div>
@@ -41,8 +41,8 @@ function updateViewContent() {
 function addMenu(name, items) {
     let itemsHTML = "";
     let menuDiv = document.createElement("div");
-    console.log("name", name);
-    console.log("items", items);
+    // console.log("name", name);
+    // console.log("items", items);
 
     for (let item of items) {
         itemsHTML += item.outerHTML;
@@ -52,7 +52,7 @@ function addMenu(name, items) {
         <div class="dropbtn">
             <div class="menu-label" onClick="showDropdownMenu(this)">${name}▾</div>
 
-            <div class="dropdown-content">
+            <div class="dropdown-content" onClick="selectDropdownOption(event.target)">
                 ${itemsHTML}
             </div>
         </div>
@@ -67,7 +67,7 @@ function addMenus(menuElements) {
     console.log("menuElements", menuElements);
     for (let menuElement of menuElements) {
         let retv = addMenu(menuElement.getAttribute("name"), menuElement.children);
-        console.log("Added menu", retv);
+        // console.log("Added menu", retv);
     }
 }
 
@@ -116,6 +116,8 @@ function showDropdownMenu(a) {
 //}
 
 function selectDropdownOption(element) {
+    console.log("element", element);
+    console.log("element href ", element.getAttribute("href"));
     content = loadContent(element.getAttribute("href"));
 }
 

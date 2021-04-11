@@ -1,21 +1,20 @@
-body {
+header {
     background-color: rgb(36, 36, 36);
     color: rgb(204, 204, 204);
 }
 
-button {
+header button {
     background-color: rgb(36, 36, 36);
     border-color: rgba(36, 36, 36, 0.726);
     color: rgb(204, 204, 204);
     font-size: 2.5ex;
 }
 
-input {
+footer {
     background-color: rgb(36, 36, 36);
     color: rgb(204, 204, 204);
 }
-
-a {
+footer a {
     color: rgb(106, 135, 89);
 }
 

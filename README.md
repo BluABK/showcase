@@ -1,7 +1,7 @@
 ## Setup
 
-1. Clone this repository into the root of your projects dir
-1b. Optional: Add it to `.gitignore` or delete `.git` to avoid issues with git-within-git.
+1. Clone this repository into the root of your projects dir¨.
+1. b) Optional: Add it to `.gitignore` or delete `.git` to avoid issues with git-within-git.
 2. Move or copy `index.html` into the root of your projects dir.
 
 Edit the `includes.html` file to point at your files, for reference see `includes.html.sample`:

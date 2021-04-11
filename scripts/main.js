@@ -153,4 +153,4 @@ function hideElementsNotInFocus() {
 window.addEventListener("click", hideElementsNotInFocus);
 
 updateViews();
-loadMenu("../includes.html");
+loadMenu("includes.html");

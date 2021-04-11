@@ -61,9 +61,14 @@ body {
     /* background-color:steelblue; debug */
 }
 
-/* .menu-label {
-    position: fixed;
-} */
+.menu-label {
+    /* position: fixed; */
+}
+
+.menu-label h1 {
+    padding: 0;
+    margin: 0;
+}
 
 .dropdown {
     position: absolute;
@@ -76,7 +81,7 @@ body {
 } */
 
 .dropbtn:hover {
-    font-weight: bolder;
+    /* font-weight: bolder; */
     cursor: pointer;
     background-color: rgba(8, 8, 8, 0.493);
 }

@@ -52,7 +52,7 @@ function addMenu(name, items) {
 
     menuDiv = `
         <div class="dropbtn"  onMouseOver="shownMenuHasMouseOver = true" onMouseOut="shownMenuHasMouseOver = false">
-            <div class="menu-label" onClick="showDropdownMenu(this)">${name}▾</div>
+            <div class="menu-label" onClick="showDropdownMenu(this)"><h1>${name}▾</h1></div>
 
             <div class="dropdown-content" onClick="selectDropdownOption(event.target)">
                 ${itemsHTML}

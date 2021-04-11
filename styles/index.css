@@ -1,11 +1,25 @@
 body {
     /* Override body margin for better control over elements. */
     margin: 0;
+    padding: 0;
 }
 
 .app {
     /* Restore default body margin for content within app. */
     margin: 8px;
+}
+
+#app-iframe {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 99.5vh;
+    border: none;
+    /* Be below all other (parent) elements. Fixes issues with menu vanishing behind. */
+    z-index: -5000;
 }
 
 .top-bar {

@@ -1,7 +1,8 @@
 // Model
+const MENU_FILE_PATH = "/showcase/includes.html";
 let menuBarDiv = `<div id="menu-bar"></div>`;
 let menusDivHTML = "";
-let href = "../placeholder.html";
+let href = "/showcase/placeholder.html";
 let content = "Please select content from the dropdown menu.";
 let shownMenu = null;
 let shownMenuHasMouseOver = false;
@@ -29,9 +30,7 @@ function updateViewTopBar() {
 }
 
 function updateViewContent() {
-    document.getElementById("app").innerHTML = `
-        ${content}
-    `;
+    document.getElementById("app-iframe").src = href;
 }
 
 // Controller
@@ -140,6 +139,7 @@ function showDropdownMenu(subMenuElement) {
 
 function selectDropdownOption(element) {
     content = loadContent(element.getAttribute("href"));
+    href = element.getAttribute("href");
 }
 
 function hideElementsNotInFocus() {
@@ -153,4 +153,4 @@ function hideElementsNotInFocus() {
 window.addEventListener("click", hideElementsNotInFocus);
 
 updateViews();
-loadMenu("includes.html");
+loadMenu(MENU_FILE_PATH);
